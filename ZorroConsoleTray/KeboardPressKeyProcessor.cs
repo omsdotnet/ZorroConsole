@@ -19,7 +19,7 @@ namespace ZorroConsoleTray
       var str = new string(charArray);
       buffer.Clear();
 
-      Debug.WriteLine(str);
+      Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {str}");
 
       return str == word;
     }
