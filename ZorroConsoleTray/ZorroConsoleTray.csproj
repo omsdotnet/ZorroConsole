@@ -60,6 +60,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TryApplicationContext.cs" />
+    <Compile Include="WindowConsoleProcessor.cs" />
+    <Compile Include="WindowConsoleSessionId.cs" />
+    <Compile Include="WindowsHandleInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

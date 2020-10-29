@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace ZorroConsoleTray
 {
-  class KeboardPressKeyProcessor
+  internal class KeboardPressKeyProcessor
   {
     private List<char> buffer = new List<char>();
     
@@ -13,15 +12,13 @@ namespace ZorroConsoleTray
       buffer.Add(Convert.ToChar(pressKeyCode));
     }
 
-    public bool IsWord(string word)
+    public string GetTypedWord()
     {
       var charArray = buffer.ToArray();
-      var str = new string(charArray);
+      var ret = new string(charArray);
       buffer.Clear();
 
-      Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {str}");
-
-      return str == word;
+      return ret;
     }
   }
 }

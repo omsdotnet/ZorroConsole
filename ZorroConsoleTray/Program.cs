@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using WindowsInput;
@@ -6,7 +7,7 @@ using WindowsInput.Native;
 
 namespace ZorroConsoleTray
 {
-  static class Program
+  internal static class Program
   {
     private const string StartWord = "ICDB START";
 
@@ -14,12 +15,18 @@ namespace ZorroConsoleTray
     private static KeboardPressKeyProcessor _keboardPressKeyProcessor;
     private static InputSimulator _inputSimulator;
     private static Thread _thread;
+    private static WindowConsoleProcessor _windowConsoleProcessor;
 
-    private static string response = string.Empty;
+    private static string request = string.Empty;
+    private static WindowConsoleSessionId curerentSessionId;
+    private static bool responseWork = false;
+
 
     [STAThread]
     static void Main()
     {
+      _windowConsoleProcessor = new WindowConsoleProcessor();
+
       _thread = new Thread(ExecuteInForeground);
       _thread.Start();
 
@@ -43,36 +50,66 @@ namespace ZorroConsoleTray
     {
       while (true)
       {
-        Thread.Sleep(500);
+        Thread.Sleep(50);
 
-        if (!string.IsNullOrEmpty(response))
+        if (!string.IsNullOrEmpty(request))
         {
-          Thread.Sleep(500);
+          Thread.Sleep(50);
 
-          response = string.Empty;
-          
-          _inputSimulator.Keyboard.TextEntry("icdb starting......................");
+          Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} > {request}");
+
+          var response = "HELLO!!!";
+
+          responseWork = true;
+          _inputSimulator.Keyboard.TextEntry(response);
           _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-          _inputSimulator.Keyboard.TextEntry("icdb started");
-          _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+          responseWork = false;
+
+          //_windowConsoleProcessor.SetSessionText(curerentSessionId, response);
+
+          Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} < {response}");
+
+          request = string.Empty;
         }
       }
     }
 
     private static void OnKeyPressed(object sender, GlobalKeyboardHookEventArgs keyboardEvent)
     {
-      if (keyboardEvent.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyUp)
+      if (!responseWork)
       {
-        if (keyboardEvent.KeyboardData.Key == Keys.Enter)
+        if (keyboardEvent.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyUp)
         {
-          if (_keboardPressKeyProcessor.IsWord(StartWord))
+          if (keyboardEvent.KeyboardData.Key == Keys.Enter)
           {
-            response = "go";
+            var sessionId = _windowConsoleProcessor.CatchUserSession();
+            var typedWord = _keboardPressKeyProcessor.GetTypedWord();
+
+            Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {sessionId} : {typedWord}");
+
+            if (sessionId.Equals(curerentSessionId))
+            {
+              request = typedWord;
+            }
+            else
+            {
+              var strLenDiff = typedWord.Length - StartWord.Length;
+              if (strLenDiff > 0)
+              {
+                typedWord = typedWord.Substring(strLenDiff);
+              }
+
+              if (typedWord == StartWord)
+              {
+                curerentSessionId = sessionId;
+                request = typedWord;
+              }
+            }
           }
-        }
-        else
-        {
-          _keboardPressKeyProcessor.Save(keyboardEvent.KeyboardData.VirtualCode);
+          else
+          {
+            _keboardPressKeyProcessor.Save(keyboardEvent.KeyboardData.VirtualCode);
+          }
         }
       }
     }

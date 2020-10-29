@@ -4,7 +4,7 @@ using ZorroConsoleTray.Properties;
 
 namespace ZorroConsoleTray
 {
-  class TryApplicationContext : ApplicationContext
+  internal class TryApplicationContext : ApplicationContext
   {
     private NotifyIcon trayIcon;
 

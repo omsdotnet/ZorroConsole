@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ZorroConsoleTray
 {
-  class GlobalKeyboardHookEventArgs : HandledEventArgs
+  internal class GlobalKeyboardHookEventArgs : HandledEventArgs
   {
     public GlobalKeyboardHook.KeyboardState KeyboardState { get; private set; }
     public GlobalKeyboardHook.LowLevelKeyboardInputEvent KeyboardData { get; private set; }
