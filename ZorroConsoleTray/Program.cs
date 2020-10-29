@@ -10,12 +10,14 @@ namespace ZorroConsoleTray
   internal static class Program
   {
     private const string StartWord = "ICDB START";
+    private const string ServiceUrl = "https://localhost:44370/appconsole/";
 
     private static GlobalKeyboardHook _globalKeyboardHook;
     private static KeboardPressKeyProcessor _keboardPressKeyProcessor;
     private static InputSimulator _inputSimulator;
     private static Thread _thread;
     private static WindowConsoleProcessor _windowConsoleProcessor;
+    private static BusinessServiceClient _serviceClient;
 
     private static string request = string.Empty;
     private static WindowConsoleSessionId curerentSessionId;
@@ -25,6 +27,8 @@ namespace ZorroConsoleTray
     [STAThread]
     static void Main()
     {
+      _serviceClient = new BusinessServiceClient();
+      
       _windowConsoleProcessor = new WindowConsoleProcessor();
 
       _thread = new Thread(ExecuteInForeground);
@@ -44,6 +48,8 @@ namespace ZorroConsoleTray
       _globalKeyboardHook.Dispose();
 
       _thread.Abort();
+
+      _serviceClient.Dispose();
     }
 
     private static void ExecuteInForeground()
@@ -54,22 +60,19 @@ namespace ZorroConsoleTray
 
         if (!string.IsNullOrEmpty(request))
         {
-          Thread.Sleep(50);
-
           Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} > {request}");
+          var response = _serviceClient.GetAnswer(ServiceUrl, request);
+          Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} < {response}");
 
-          var response = "HELLO!!!";
+          request = string.Empty;
 
           responseWork = true;
           _inputSimulator.Keyboard.TextEntry(response);
           _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
           responseWork = false;
-
+          
+          //for terminal mode
           //_windowConsoleProcessor.SetSessionText(curerentSessionId, response);
-
-          Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} < {response}");
-
-          request = string.Empty;
         }
       }
     }

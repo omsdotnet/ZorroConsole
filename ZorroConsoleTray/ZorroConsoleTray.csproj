@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessServiceClient.cs" />
     <Compile Include="GlobalKeyboardHook.cs" />
     <Compile Include="KeboardPressKeyProcessor.cs" />
     <Compile Include="SettingsForm.cs">
