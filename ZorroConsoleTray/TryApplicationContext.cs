@@ -15,10 +15,22 @@ namespace ZorroConsoleTray
         Icon = Resources.AppIcon,
         Text = "This is ZorroConsole tray app",
         ContextMenu = new ContextMenu(new[] {
+          new MenuItem("Settings", Settings),
           new MenuItem("Exit", Exit)
         }),
         Visible = true
       };
+    }
+
+    private void Settings(object sender, EventArgs e)
+    {
+      var form = new SettingsForm();
+      var result = form.ShowDialog();
+
+      if (result == DialogResult.OK)
+      {
+
+      }
     }
 
     void Exit(object sender, EventArgs e)
