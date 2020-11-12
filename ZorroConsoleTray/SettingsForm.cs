@@ -13,7 +13,7 @@ namespace ZorroConsoleTray
 
     private void SettingsForm_Load(object sender, EventArgs e)
     {
-      var screen = Screen.FromPoint(this.Location);
+      var screen = Screen.PrimaryScreen;
       this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Bottom - this.Height);
     }
   }

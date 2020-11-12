@@ -28,120 +28,138 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.textBox1 = new System.Windows.Forms.TextBox();
-      this.label1 = new System.Windows.Forms.Label();
-      this.textBox2 = new System.Windows.Forms.TextBox();
-      this.label2 = new System.Windows.Forms.Label();
-      this.textBox3 = new System.Windows.Forms.TextBox();
-      this.label3 = new System.Windows.Forms.Label();
-      this.button1 = new System.Windows.Forms.Button();
-      this.button2 = new System.Windows.Forms.Button();
+      this.startWordTextBox = new System.Windows.Forms.TextBox();
+      this.startWordLabel = new System.Windows.Forms.Label();
+      this.stopWordTextBox = new System.Windows.Forms.TextBox();
+      this.stopWordLabel = new System.Windows.Forms.Label();
+      this.httpTextBox = new System.Windows.Forms.TextBox();
+      this.httpLabel = new System.Windows.Forms.Label();
+      this.applyButton = new System.Windows.Forms.Button();
+      this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanel.SuspendLayout();
       this.SuspendLayout();
       // 
-      // textBox1
+      // startWordTextBox
       // 
-      this.textBox1.Location = new System.Drawing.Point(77, 22);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(248, 20);
-      this.textBox1.TabIndex = 0;
+      this.startWordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.startWordTextBox.Location = new System.Drawing.Point(123, 3);
+      this.startWordTextBox.Multiline = true;
+      this.startWordTextBox.Name = "startWordTextBox";
+      this.startWordTextBox.Size = new System.Drawing.Size(392, 20);
+      this.startWordTextBox.TabIndex = 1;
       // 
-      // label1
+      // startWordLabel
       // 
-      this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(13, 25);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(58, 13);
-      this.label1.TabIndex = 1;
-      this.label1.Text = "Start Word";
+      this.startWordLabel.AutoSize = true;
+      this.startWordLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.startWordLabel.Location = new System.Drawing.Point(3, 0);
+      this.startWordLabel.Name = "startWordLabel";
+      this.startWordLabel.Size = new System.Drawing.Size(114, 26);
+      this.startWordLabel.TabIndex = 0;
+      this.startWordLabel.Text = "Start Word";
+      this.startWordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // textBox2
+      // stopWordTextBox
       // 
-      this.textBox2.Location = new System.Drawing.Point(77, 48);
-      this.textBox2.Name = "textBox2";
-      this.textBox2.Size = new System.Drawing.Size(248, 20);
-      this.textBox2.TabIndex = 0;
+      this.stopWordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.stopWordTextBox.Location = new System.Drawing.Point(123, 29);
+      this.stopWordTextBox.Multiline = true;
+      this.stopWordTextBox.Name = "stopWordTextBox";
+      this.stopWordTextBox.Size = new System.Drawing.Size(392, 20);
+      this.stopWordTextBox.TabIndex = 3;
       // 
-      // label2
+      // stopWordLabel
       // 
-      this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(13, 51);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(58, 13);
-      this.label2.TabIndex = 1;
-      this.label2.Text = "Stop Word";
+      this.stopWordLabel.AutoSize = true;
+      this.stopWordLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.stopWordLabel.Location = new System.Drawing.Point(3, 26);
+      this.stopWordLabel.Name = "stopWordLabel";
+      this.stopWordLabel.Size = new System.Drawing.Size(114, 26);
+      this.stopWordLabel.TabIndex = 2;
+      this.stopWordLabel.Text = "Stop Word";
+      this.stopWordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // textBox3
+      // httpTextBox
       // 
-      this.textBox3.Location = new System.Drawing.Point(118, 74);
-      this.textBox3.Name = "textBox3";
-      this.textBox3.Size = new System.Drawing.Size(207, 20);
-      this.textBox3.TabIndex = 0;
+      this.httpTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.httpTextBox.Location = new System.Drawing.Point(123, 55);
+      this.httpTextBox.Multiline = true;
+      this.httpTextBox.Name = "httpTextBox";
+      this.httpTextBox.Size = new System.Drawing.Size(392, 21);
+      this.httpTextBox.TabIndex = 5;
       // 
-      // label3
+      // httpLabel
       // 
-      this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(13, 77);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(99, 13);
-      this.label3.TabIndex = 1;
-      this.label3.Text = "Web Service (Post)";
+      this.httpLabel.AutoSize = true;
+      this.httpLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.httpLabel.Location = new System.Drawing.Point(3, 52);
+      this.httpLabel.Name = "httpLabel";
+      this.httpLabel.Size = new System.Drawing.Size(114, 27);
+      this.httpLabel.TabIndex = 4;
+      this.httpLabel.Text = "Web Service (Post)";
+      this.httpLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // button1
+      // applyButton
       // 
-      this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-      this.button1.Location = new System.Drawing.Point(16, 121);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(75, 23);
-      this.button1.TabIndex = 2;
-      this.button1.Text = "Apply";
-      this.button1.UseVisualStyleBackColor = true;
+      this.applyButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.applyButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.applyButton.Location = new System.Drawing.Point(0, 79);
+      this.applyButton.Name = "applyButton";
+      this.applyButton.Size = new System.Drawing.Size(518, 38);
+      this.applyButton.TabIndex = 0;
+      this.applyButton.Text = "Apply";
+      this.applyButton.UseVisualStyleBackColor = true;
       // 
-      // button2
+      // tableLayoutPanel
       // 
-      this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.button2.Location = new System.Drawing.Point(250, 121);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(75, 23);
-      this.button2.TabIndex = 2;
-      this.button2.Text = "Cancel";
-      this.button2.UseVisualStyleBackColor = true;
+      this.tableLayoutPanel.ColumnCount = 2;
+      this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+      this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel.Controls.Add(this.startWordLabel, 0, 0);
+      this.tableLayoutPanel.Controls.Add(this.stopWordLabel, 0, 1);
+      this.tableLayoutPanel.Controls.Add(this.httpLabel, 0, 2);
+      this.tableLayoutPanel.Controls.Add(this.startWordTextBox, 1, 0);
+      this.tableLayoutPanel.Controls.Add(this.stopWordTextBox, 1, 1);
+      this.tableLayoutPanel.Controls.Add(this.httpTextBox, 1, 2);
+      this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel.Name = "tableLayoutPanel";
+      this.tableLayoutPanel.RowCount = 3;
+      this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+      this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+      this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+      this.tableLayoutPanel.Size = new System.Drawing.Size(518, 79);
+      this.tableLayoutPanel.TabIndex = 1;
       // 
       // SettingsForm
       // 
-      this.AcceptButton = this.button1;
+      this.AcceptButton = this.applyButton;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.CancelButton = this.button2;
-      this.ClientSize = new System.Drawing.Size(348, 159);
-      this.Controls.Add(this.button2);
-      this.Controls.Add(this.button1);
-      this.Controls.Add(this.label3);
-      this.Controls.Add(this.label2);
-      this.Controls.Add(this.label1);
-      this.Controls.Add(this.textBox3);
-      this.Controls.Add(this.textBox2);
-      this.Controls.Add(this.textBox1);
+      this.ClientSize = new System.Drawing.Size(518, 117);
+      this.Controls.Add(this.tableLayoutPanel);
+      this.Controls.Add(this.applyButton);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = "SettingsForm";
       this.Text = "Settings";
       this.Load += new System.EventHandler(this.SettingsForm_Load);
+      this.tableLayoutPanel.ResumeLayout(false);
+      this.tableLayoutPanel.PerformLayout();
       this.ResumeLayout(false);
-      this.PerformLayout();
 
     }
 
     #endregion
-
-    private System.Windows.Forms.TextBox textBox1;
-    private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.TextBox textBox2;
-    private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.TextBox textBox3;
-    private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Label startWordLabel;
+    private System.Windows.Forms.Label stopWordLabel;
+    private System.Windows.Forms.Label httpLabel;
+    private System.Windows.Forms.Button applyButton;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+    public System.Windows.Forms.TextBox startWordTextBox;
+    public System.Windows.Forms.TextBox stopWordTextBox;
+    public System.Windows.Forms.TextBox httpTextBox;
   }
 }
 

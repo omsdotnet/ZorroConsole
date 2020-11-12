@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
@@ -9,8 +10,9 @@ namespace ZorroConsoleTray
 {
   internal static class Program
   {
-    private const string StartWord = "ICDB START";
-    private const string ServiceUrl = "https://localhost:44370/appconsole/";
+    public static string StartWord = "APPTEST START";
+    public static string StopWord = "APPTEST STOP";
+    public static string ServiceUrl = "https://localhost:44370/appconsole/";
 
     private static GlobalKeyboardHook _globalKeyboardHook;
     private static KeboardPressKeyProcessor _keboardPressKeyProcessor;
@@ -27,6 +29,8 @@ namespace ZorroConsoleTray
     [STAThread]
     static void Main()
     {
+      LoadSettings();
+      
       _serviceClient = new BusinessServiceClient();
       
       _windowConsoleProcessor = new WindowConsoleProcessor();
@@ -52,6 +56,43 @@ namespace ZorroConsoleTray
       _serviceClient.Dispose();
     }
 
+    public static void SaveSettings()
+    {
+      var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+      if (0 == ConfigurationManager.AppSettings.Count)
+      {
+        config.AppSettings.Settings.Add("StartWord", StartWord);
+        config.AppSettings.Settings.Add("StopWord", StopWord);
+        config.AppSettings.Settings.Add("ServiceUrl", ServiceUrl);
+
+        config.Save(ConfigurationSaveMode.Full);
+      }
+      else
+      {
+        config.AppSettings.Settings["StartWord"].Value = StartWord;
+        config.AppSettings.Settings["StopWord"].Value = StopWord;
+        config.AppSettings.Settings["ServiceUrl"].Value = ServiceUrl;
+
+        config.Save(ConfigurationSaveMode.Modified);
+      }
+
+      ConfigurationManager.RefreshSection("appSettings");
+    }
+
+
+    private static void LoadSettings()
+    {
+      var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+      if (3 <= ConfigurationManager.AppSettings.Count)
+      {
+        StartWord = ConfigurationManager.AppSettings["StartWord"];
+        StopWord = ConfigurationManager.AppSettings["StopWord"];
+        ServiceUrl = ConfigurationManager.AppSettings["ServiceUrl"];
+      }
+    }
+
     private static void ExecuteInForeground()
     {
       while (true)
@@ -60,19 +101,25 @@ namespace ZorroConsoleTray
 
         if (!string.IsNullOrEmpty(request))
         {
-          Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} > {request}");
-          var response = _serviceClient.GetAnswer(ServiceUrl, request);
-          Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} < {response}");
-
+          var serviceRequest = string.Copy(request);
           request = string.Empty;
+
+          Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} > {serviceRequest}");
+          var response = _serviceClient.GetAnswer(ServiceUrl, serviceRequest);
+          Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} < {response}");
 
           responseWork = true;
           _inputSimulator.Keyboard.TextEntry(response);
           _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
           responseWork = false;
-          
+
           //for terminal mode
           //_windowConsoleProcessor.SetSessionText(curerentSessionId, response);
+
+          if (serviceRequest.EndsWith(StopWord))
+          {
+            curerentSessionId = new WindowConsoleSessionId();
+          }
         }
       }
     }
@@ -88,7 +135,7 @@ namespace ZorroConsoleTray
             var sessionId = _windowConsoleProcessor.CatchUserSession();
             var typedWord = _keboardPressKeyProcessor.GetTypedWord();
 
-            Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {sessionId} : {typedWord}");
+            Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {sessionId} ({curerentSessionId}) : {typedWord}");
 
             if (sessionId.Equals(curerentSessionId))
             {
@@ -96,13 +143,7 @@ namespace ZorroConsoleTray
             }
             else
             {
-              var strLenDiff = typedWord.Length - StartWord.Length;
-              if (strLenDiff > 0)
-              {
-                typedWord = typedWord.Substring(strLenDiff);
-              }
-
-              if (typedWord == StartWord)
+              if (typedWord.EndsWith(StartWord))
               {
                 curerentSessionId = sessionId;
                 request = typedWord;

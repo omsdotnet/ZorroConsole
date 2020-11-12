@@ -25,11 +25,19 @@ namespace ZorroConsoleTray
     private void Settings(object sender, EventArgs e)
     {
       var form = new SettingsForm();
+      form.startWordTextBox.Text = Program.StartWord;
+      form.stopWordTextBox.Text = Program.StopWord;
+      form.httpTextBox.Text = Program.ServiceUrl;
+
       var result = form.ShowDialog();
 
       if (result == DialogResult.OK)
       {
+        Program.StartWord = form.startWordTextBox.Text;
+        Program.StopWord = form.stopWordTextBox.Text;
+        Program.ServiceUrl = form.httpTextBox.Text;
 
+        Program.SaveSettings();
       }
     }
 
