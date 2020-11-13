@@ -12,7 +12,13 @@ namespace ZorroConsoleTray
   {
     public static string StartWord = "APPTEST START";
     public static string StopWord = "APPTEST STOP";
-    public static string ServiceUrl = "https://localhost:44370/appconsole/";
+
+    public static string ServiceUrl =
+#if DEBUG
+     "https://localhost:44370/appconsole/";
+#else
+     "https://zorrobackend.azurewebsites.net/appconsole/";
+#endif
 
     private static GlobalKeyboardHook _globalKeyboardHook;
     private static KeboardPressKeyProcessor _keboardPressKeyProcessor;
