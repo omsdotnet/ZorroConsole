@@ -56,7 +56,7 @@
       this.startWordLabel.Name = "startWordLabel";
       this.startWordLabel.Size = new System.Drawing.Size(114, 26);
       this.startWordLabel.TabIndex = 0;
-      this.startWordLabel.Text = "Start Word";
+      this.startWordLabel.Text = "Start Word (ENG)";
       this.startWordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // stopWordTextBox
@@ -76,7 +76,7 @@
       this.stopWordLabel.Name = "stopWordLabel";
       this.stopWordLabel.Size = new System.Drawing.Size(114, 26);
       this.stopWordLabel.TabIndex = 2;
-      this.stopWordLabel.Text = "Stop Word";
+      this.stopWordLabel.Text = "Stop Word (ENG)";
       this.stopWordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // httpTextBox

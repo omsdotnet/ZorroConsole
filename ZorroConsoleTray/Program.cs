@@ -114,13 +114,16 @@ namespace ZorroConsoleTray
           var response = _serviceClient.GetAnswer(ServiceUrl, serviceRequest);
           Debug.WriteLine($"{DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff")} - {curerentSessionId} < {response}");
 
-          responseWork = true;
-          _inputSimulator.Keyboard.TextEntry(response);
-          _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
-          responseWork = false;
+          if (!string.IsNullOrEmpty(response))
+          {
+            responseWork = true;
+            _inputSimulator.Keyboard.TextEntry(response);
+            _inputSimulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
+            responseWork = false;
 
-          //for terminal mode
-          //_windowConsoleProcessor.SetSessionText(curerentSessionId, response);
+            //for terminal mode
+            //_windowConsoleProcessor.SetSessionText(curerentSessionId, response);
+          }
 
           if (serviceRequest.EndsWith(StopWord))
           {

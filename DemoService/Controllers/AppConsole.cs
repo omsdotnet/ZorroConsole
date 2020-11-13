@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using DemoService.BL;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DemoService.Controllers
 {
@@ -7,19 +7,17 @@ namespace DemoService.Controllers
   [Route("[controller]")]
   public class AppConsole : ControllerBase
   {
-    private readonly ILogger<AppConsole> _logger;
+    private readonly IMessageProcessingLogic _bLogic;
 
-    public AppConsole(ILogger<AppConsole> logger)
+    public AppConsole(IMessageProcessingLogic bLogic)
     {
-      _logger = logger;
+      _bLogic = bLogic;
     }
 
     [HttpPost]
-    public string ProcessMessages(string request)
+    public string ProcessMessages([FromBody]string request)
     {
-      _logger.LogDebug(request);
-
-      return "Hello";
+      return _bLogic.Process(request);
     }
   }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ZorroConsoleTray
 {
@@ -13,33 +11,13 @@ namespace ZorroConsoleTray
 
     public string GetAnswer(string url, string requestText)
     {
-      WebRequest request = WebRequest.Create(url);
-      request.Method = "POST";
+      var response = Task.Run(async () => await _client.PostAsync(url, new StringContent($"\"{requestText}\"", Encoding.UTF8, "application/json"))).Result;
 
-      byte[] byteArray = Encoding.UTF8.GetBytes(requestText);
+      response.EnsureSuccessStatusCode();
 
-      request.ContentType = "application/x-www-form-urlencoded";
-      request.ContentLength = byteArray.Length;
+      var responseText = Task.Run(async () => await response.Content.ReadAsStringAsync()).Result;
 
-      Stream dataStream = request.GetRequestStream();
-      dataStream.Write(byteArray, 0, byteArray.Length);
-      dataStream.Close();
-
-      WebResponse response = request.GetResponse();
-
-      Debug.WriteLine(((HttpWebResponse)response).StatusDescription);
-
-      string responseFromServer;
-
-      using (dataStream = response.GetResponseStream())
-      {
-        StreamReader reader = new StreamReader(dataStream);
-        responseFromServer = reader.ReadToEnd();
-      }
-
-      response.Close();
-
-      return responseFromServer;
+      return responseText;
     }
 
     public void Dispose()
