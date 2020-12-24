@@ -351,3 +351,4 @@ MigrationBackup/
 .ionide/
 /DemoService/.config
 /DemoService/Properties/ServiceDependencies/zorrobackend - Web Deploy
+/DemoService/DemoService.xml

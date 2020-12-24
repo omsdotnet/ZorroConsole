@@ -14,6 +14,11 @@ namespace DemoService.Controllers
       _bLogic = bLogic;
     }
 
+    /// <summary>
+    /// Microservice Console Controller
+    /// </summary>
+    /// <param name="request">For the request text to be correctly recognized, specify it in quotes, for example: "GIVE IMAGE"</param>
+    /// <returns>response text</returns>
     [HttpPost]
     public string ProcessMessages([FromBody]string request)
     {

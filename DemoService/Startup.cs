@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using DemoService.BL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,7 +23,13 @@ namespace DemoService
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllers();
-      services.AddSwaggerGen();
+      services.AddSwaggerGen(c =>
+      {
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+        c.IncludeXmlComments(xmlPath);
+      });
 
       services.AddSingleton<IMessageProcessingLogic, MessageProcessingLogic>();
     }
@@ -51,6 +60,7 @@ namespace DemoService
       {
         endpoints.MapControllers();
       });
+
     }
   }
 }
