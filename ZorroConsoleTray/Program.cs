@@ -3,8 +3,8 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
-using WindowsInput;
-using WindowsInput.Native;
+using InputSimulator = ZorroConsoleTray.WindowsInput.InputSimulator;
+using VirtualKeyCode = ZorroConsoleTray.WindowsInput.Native.VirtualKeyCode;
 
 namespace ZorroConsoleTray
 {
