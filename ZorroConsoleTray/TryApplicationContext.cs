@@ -20,6 +20,7 @@ namespace ZorroConsoleTray
         }),
         Visible = true
       };
+      trayIcon.DoubleClick += Settings;
     }
 
     private void Settings(object sender, EventArgs e)
