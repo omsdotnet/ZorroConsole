@@ -35,10 +35,10 @@ namespace DemoService.BL
 
         if (request.ToUpper() == $"{AppName} STOP")
         {
-          return "Пока";
+          return "By...";
         }
         
-        return "Не понял...";
+        return "Didn't understand your command...";
       }
 
       return string.Empty;
