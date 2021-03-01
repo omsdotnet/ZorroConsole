@@ -20,13 +20,15 @@ namespace ZorroConsole
 
       var client = new ServiceClient(serviceUrl);
 
+      Console.WriteLine(userInput);
+
       do
       {
         string response = client.Send(userInput);
         
         Console.WriteLine(response);
 
-        repeat = userInput != stopWord;
+        repeat = !string.Equals(userInput, stopWord, StringComparison.OrdinalIgnoreCase);
 
         if (repeat)
         {
