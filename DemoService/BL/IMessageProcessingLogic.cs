@@ -2,6 +2,6 @@
 {
   public interface IMessageProcessingLogic
   {
-    string Process(string request);
+    ServiceMessage Process(ServiceMessage request);
   }
 }

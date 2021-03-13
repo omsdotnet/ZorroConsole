@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +15,17 @@ namespace ZorroConsole
       this.url = url;
     }
 
-    public string Send(string userInput)
+    public ServiceMessage Send(ServiceMessage request)
     {
-      using (HttpContent httpContent = new StringContent($"\"{userInput}\"", Encoding.UTF8, "application/json"))
+      Client.DefaultRequestHeaders.Clear();
+
+      foreach (var header in request.Context)
+      {
+        Client.DefaultRequestHeaders.Add(header.Key, header.Value);
+      }
+
+
+      using (HttpContent httpContent = new StringContent($"\"{request.Text}\"", Encoding.UTF8, "application/json"))
       {
         var result = Task.Run(() => Client.PostAsync(url, httpContent)).Result;
 
@@ -24,7 +33,9 @@ namespace ZorroConsole
 
         var resultStr = Task.Run(() => result.Content.ReadAsStringAsync()).Result;
 
-        return resultStr;
+        var responseHeaders = result.Headers.ToDictionary(x => x.Key, y => y.Value);
+
+        return new ServiceMessage(resultStr, responseHeaders);
       }
     }
   }

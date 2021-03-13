@@ -1,5 +1,10 @@
-﻿using DemoService.BL;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using DemoService.BL;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
 namespace DemoService.Controllers
 {
@@ -22,7 +27,17 @@ namespace DemoService.Controllers
     [HttpPost]
     public string ProcessMessages([FromBody]string request)
     {
-      return _bLogic.Process(request);
+      var headers = HttpContext.Request.Headers
+        .ToDictionary(x => x.Key, y => (IEnumerable<string>)y.Value);
+
+      var result = _bLogic.Process(new ServiceMessage(request, headers));
+
+      foreach (var header in result.Context)
+      {
+        HttpContext.Response.Headers.Add(header.Key, new StringValues(header.Value.ToArray()));
+      }
+
+      return result.Text;
     }
   }
 }

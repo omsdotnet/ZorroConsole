@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace DemoService
 {
-  public class Startup
+  internal class Startup
   {
     public Startup(IConfiguration configuration)
     {

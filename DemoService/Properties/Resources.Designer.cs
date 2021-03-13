@@ -61,7 +61,18 @@ namespace DemoService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string
+        ///   Looks up a localized string similar to Now: {0}
+        ///
+        ///
+        ///************************************************
+        ///* Welcome to the demo program                  *
+        ///* Write me commands                            *
+        ///* I will do everything that I understand ...   *
+        ///*                                              *
+        ///* For example:                                 *
+        ///* GIVE IMAGE            GIVE FORMATED          *
+        ///* GIVE ANIMATION        GIVE TABLE             *
+        ///************************************************.
         /// </summary>
         internal static string BorderedMessage {
             get {
@@ -70,11 +81,30 @@ namespace DemoService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string
+        ///   Looks up a localized string similar to ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        ///,, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ImageMessage {
             get {
                 return ResourceManager.GetString("ImageMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ╔═══╦══════════════════════════════════╦═════════╦════════════════════════╦════════════════╗
+        ///║   ║                A                 ║    B    ║           C            ║       D        ║
+        ///╠═══╬══════════════════════════════════╬═════════╬════════════════════════╬════════════════╣
+        ///║ 1 ║ Col1                             ║ Col2    ║ Col3                   ║ Numeric Column ║
+        ///║ 2 ║ Value 1                          ║ Value 2 ║ 123                    ║ 10.0           ║
+        ///║ 3 ║ Separate                         ║ c [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TableMessage {
+            get {
+                return ResourceManager.GetString("TableMessage", resourceCulture);
             }
         }
     }
