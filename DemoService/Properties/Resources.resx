@@ -118,6 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AnimationMessage0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage0.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage7.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage8.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="AnimationMessage9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\animationmessage9.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="BorderedMessage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\borderedmessage.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

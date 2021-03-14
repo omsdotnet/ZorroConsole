@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using DemoService.Controllers;
 using DemoService.Properties;
@@ -13,6 +12,20 @@ namespace DemoService.BL
     private const string AppName = "APPTEST";
 
     private readonly ILogger<AppConsole> _logger;
+
+    private readonly string[] _animation = 
+    {
+      Resources.AnimationMessage0,
+      Resources.AnimationMessage1,
+      Resources.AnimationMessage2,
+      Resources.AnimationMessage3,
+      Resources.AnimationMessage4,
+      Resources.AnimationMessage5,
+      Resources.AnimationMessage6,
+      Resources.AnimationMessage7,
+      Resources.AnimationMessage8,
+      Resources.AnimationMessage9,
+    };
 
     public MessageProcessingLogic(ILogger<AppConsole> logger)
     {
@@ -43,39 +56,27 @@ namespace DemoService.BL
 
       if (request.Text.ToUpper() == $"GIVE ANIMATION")
       {
-        using var reader = new StringReader(Resources.ImageMessage);
-        string first = reader.ReadLine();
-
         var headers = new Dictionary<string, IEnumerable<string>>()
         {
           {"pooling", new List<string>() {"1"}},
           {"clrscr", new List<string>() {"-"}},
           {"write", new List<string>() {"-"}},
-          {"count", new List<string>() {"1"}},
+          {"count", new List<string>() {"0"}},
         };
 
-        return new ServiceMessage(first, headers);
+        return new ServiceMessage(_animation[0], headers);
       }
 
       if (request.Context.ContainsKey("pooling"))
       {
         var linesRequest = Convert.ToInt32(request.Context["count"].First());
 
-        var linesImage = Resources.ImageMessage.Split('\n').Length;
+        linesRequest++;
 
-        if (linesRequest == linesImage)
+        if (linesRequest == _animation.Length)
         {
           return new ServiceMessage(string.Empty, new Dictionary<string, IEnumerable<string>>());
         }
-
-        linesRequest++;
-
-        string[] lines = Resources.ImageMessage
-          .Split('\n')
-          .Take(linesRequest)
-          .ToArray();
-
-        var output = string.Join('\n', lines);
 
         var headers = new Dictionary<string, IEnumerable<string>>()
         {
@@ -85,7 +86,7 @@ namespace DemoService.BL
           {"count", new List<string>() { linesRequest.ToString() }},
         };
 
-        return new ServiceMessage(output, headers);
+        return new ServiceMessage(_animation[linesRequest], headers);
       }
 
       if (request.Text.ToUpper() == $"GIVE FORMATED")

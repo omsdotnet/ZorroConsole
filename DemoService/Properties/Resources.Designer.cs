@@ -61,18 +61,159 @@ namespace DemoService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///   o 
+        ///  /|\
+        ///  / \
+        ///.
+        /// </summary>
+        internal static string AnimationMessage0 {
+            get {
+                return ResourceManager.GetString("AnimationMessage0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///  \o/
+        ///   |  
+        ///  / \ 
+        ///.
+        /// </summary>
+        internal static string AnimationMessage1 {
+            get {
+                return ResourceManager.GetString("AnimationMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///  _ o 
+        ///   /\ 
+        ///  | \ 
+        ///.
+        /// </summary>
+        internal static string AnimationMessage2 {
+            get {
+                return ResourceManager.GetString("AnimationMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///       
+        ///   __\o
+        ///  /) | 
+        ///.
+        /// </summary>
+        internal static string AnimationMessage3 {
+            get {
+                return ResourceManager.GetString("AnimationMessage3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///  __|  
+        ///    \o 
+        ///    ( \
+        ///.
+        /// </summary>
+        internal static string AnimationMessage4 {
+            get {
+                return ResourceManager.GetString("AnimationMessage4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///    \ /
+        ///     | 
+        ///    /o\
+        ///.
+        /// </summary>
+        internal static string AnimationMessage5 {
+            get {
+                return ResourceManager.GetString("AnimationMessage5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///       |__ 
+        ///     o/    
+        ///    / )    
+        ///.
+        /// </summary>
+        internal static string AnimationMessage6 {
+            get {
+                return ResourceManager.GetString("AnimationMessage6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///         
+        ///    o/__ 
+        ///    |  (\
+        ///.
+        /// </summary>
+        internal static string AnimationMessage7 {
+            get {
+                return ResourceManager.GetString("AnimationMessage7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///        o _
+        ///        /\ 
+        ///        / |
+        ///.
+        /// </summary>
+        internal static string AnimationMessage8 {
+            get {
+                return ResourceManager.GetString("AnimationMessage8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///        \o/
+        ///         |  
+        ///        / \ 
+        ///.
+        /// </summary>
+        internal static string AnimationMessage9 {
+            get {
+                return ResourceManager.GetString("AnimationMessage9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Now: {0}
         ///
-        ///
-        ///************************************************
-        ///* Welcome to the demo program                  *
-        ///* Write me commands                            *
-        ///* I will do everything that I understand ...   *
-        ///*                                              *
-        ///* For example:                                 *
-        ///* GIVE IMAGE            GIVE FORMATED          *
-        ///* GIVE ANIMATION        GIVE TABLE             *
-        ///************************************************.
+        ///                     ,---.           ,---.
+        ///                    / /&quot;`.\.--&quot;&quot;&quot;--./,&apos;&quot;\ \
+        ///                    \ \    _       _    / /
+        ///                     `./  / __   __ \  \,&apos;
+        ///                      /    /_O)_(_O\    \
+        ///                      |  .-&apos;  ___  `-.  |
+        ///                   .--|       \_/       |--.
+        ///                 ,&apos;    \   \   |   /   /    `.
+        ///                /       `.  `--^--&apos;  ,&apos;       \
+        ///             .-&quot;&quot;&quot;&quot;&quot;-.    `--.___.--&apos;     .-&quot;&quot;&quot;&quot;&quot;-.
+        ///.-----------/         \------------------/         \ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BorderedMessage {
             get {
