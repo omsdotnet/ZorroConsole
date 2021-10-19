@@ -4,7 +4,7 @@ Console for your microservices
 
 ### Demo service
 
-* https://zorrobackend.azurewebsites.ne
+* https://zorrobackend.azurewebsites.net
 
 # Project Promo:
 
