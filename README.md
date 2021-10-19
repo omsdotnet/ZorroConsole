@@ -2,10 +2,6 @@
 
 Console for your microservices
 
-### Icon converter
-
-* https://icoconvert.com
-
 
 # Project Promo:
 
